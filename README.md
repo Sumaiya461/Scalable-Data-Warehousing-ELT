@@ -1,137 +1,312 @@
-# **📊 Building a Scalable Data Warehouse with ELT, EDA, and Advanced Analytics for Business Intelligence**
+# 📊 Scalable Data Warehousing using ELT: From Raw Data to Business Insights
+
+![SQL](https://img.shields.io/badge/SQL-Server-red?style=for-the-badge)
+![Data Warehouse](https://img.shields.io/badge/Data-Warehouse-blue?style=for-the-badge)
+![ELT](https://img.shields.io/badge/ELT-Pipeline-green?style=for-the-badge)
+![Power BI](https://img.shields.io/badge/Power-BI-yellow?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-Analytics-blue?style=for-the-badge)
 
 ---
 
-## **1️⃣ Data Warehouse Architecture (Bronze, Silver, Gold Layers)**
+# 📌 Project Overview
 
-To ensure **efficient data storage, processing, and retrieval**, we structured the data warehouse into three layers:
+This project demonstrates the design and implementation of a scalable SQL Data Warehouse using the **Bronze–Silver–Gold architecture** and the **ELT (Extract, Load, Transform)** methodology.
 
-### **🔹 Bronze Layer (Raw Data Storage) 🏗️**
-✅ **Purpose:** Stores raw, unprocessed data from different sources.
-✅ **Key Features:**
-- Data stored **as-is** for debugging and traceability.
-- No transformations applied.
-- Used mainly by **Data Engineers**.
+The objective is to transform raw business data into clean, reliable, and analytics-ready datasets that support business intelligence and data-driven decision making.
 
-💡 **Example:** Suppose we are working with customer purchase data. The raw file from the source might contain missing values, inconsistent formats, or duplicate records.
+Throughout this project, data is collected from multiple sources, loaded into a centralized warehouse, transformed through multiple processing layers, and prepared for reporting and advanced analysis.
 
 ---
 
-### **🔹 Silver Layer (Clean & Standardized Data) 🏛️**
-✅ **Purpose:** Standardizes and prepares data for analysis.
-✅ **Transformations Applied:**
-- **Data Cleaning**: Remove duplicates, handle missing data, correct formats.
-- **Data Standardization**: Ensure consistent date formats, numerical precision.
-- **Derived Columns**: Create new attributes based on existing ones.
-- **Data Enrichment**: Merge data from different sources.
+# 🚀 Project Objectives
+
+✔ Design a scalable SQL Data Warehouse
+
+✔ Build an ELT data pipeline
+
+✔ Implement Bronze, Silver and Gold architecture
+
+✔ Perform data cleaning and transformation
+
+✔ Create business-ready datasets
+
+✔ Generate analytical SQL reports
+
+✔ Practice real-world Data Warehousing concepts
 
 ---
 
-### **🔹 Gold Layer (Business-Ready Data) 🏆**
-✅ **Purpose:** Provides **final, aggregated** data for analytics and reporting.
-✅ **Transformations Applied:**
-- **Data Integration**: Combining multiple datasets.
-- **Data Aggregation**: Summarizing data (e.g., total sales per region).
-- **Business Logic & Rules**: Implementing domain-specific rules.
+# 🏗️ Data Warehouse Architecture
 
-🎯 **Target Audience:** Business analysts and executives who use this data for **decision-making and reporting**.
+The project follows a **three-layer Medallion Architecture**.
 
----
+## 🥉 Bronze Layer (Raw Data)
 
-## **2️⃣ ELT Process (Extract, Load, Transform) 🔄**
+The Bronze layer stores raw source data exactly as received.
 
-### **🔹 Extraction 📥**
-✅ **Method:** Pull extraction from source systems (databases, APIs, flat files).
-✅ **Type:** Full extraction (extracting all records).
-✅ **Technique Used:** File Parsing (Reading and processing structured/unstructured files).
+### Features
 
-### **🔹 Load (Storing into Warehouse) 📦**
-✅ **Processing Type:** Batch Processing.
-✅ **Load Method:** Full Load (Truncate & Insert).
-✅ **Slow Changing Dimensions (SCD1 - Overwrite):** Overwrite old records instead of keeping history.
-
-### **🔹 Transform (Data Processing) 🔧**
-Includes:
-- **Data Cleaning** – Removing duplicates, handling missing data, and standardizing formats.
-- **Data Enrichment** – Adding additional attributes to enhance analysis.
-- **Data Integration** – Merging datasets from different sources.
-- **Derived Columns** – Creating new insights (e.g., calculating "Profit Margin" from revenue and cost).
-- **Data Aggregation** – Summarizing data for reporting.
+- Raw data ingestion
+- No transformations
+- Historical backup
+- Source-level traceability
 
 ---
 
-## **3️⃣ Data Analytics & EDA (Exploratory Data Analysis) 🔍**
+## 🥈 Silver Layer (Clean Data)
 
-### **🔹 EDA (Exploratory Data Analysis) 📊**
-✅ **Database Exploration:** Understanding data structure and relationships.
-✅ **Dimension Exploration:** Analyzing categorical attributes (e.g., products, regions).
-✅ **Date Exploration:** Identifying trends and seasonality.
-✅ **Ranking (Top-N / Bottom-N):** Finding best/worst performers.
+The Silver layer focuses on improving data quality.
 
----
+### Transformations
 
-## **4️⃣ Advanced Analytics & Report Building 📈**
-
-### **🔹 Change Over Time (Trends Analysis) 📅**
-✅ **What is it?**
-- Examines how key metrics **change over time** to identify patterns, trends, and seasonality.
-
-✅ **How to do it?**
-1. Aggregate data by **daily, weekly, or monthly** periods.
-2. Use **line charts** or **bar charts** to visualize trends.
-3. Identify **seasonality, spikes, and trends**.
-
-✅ **Example Data: Monthly Sales Trend**
-
-| Month  | Sales ($) |
-|--------|---------|
-| Jan    | 10,000  |
-| Feb    | 12,000  |
-| Mar    | 15,000  |
-| Apr    | 9,000   |
-| May    | 14,500  |
-| Jun    | 18,000  |
-
-✅ **Insights We Get:**
-- 📊 Sales are **increasing**, with a dip in April.
-- 📈 Helps in **forecasting future sales**.
-- 📌 Seasonal fluctuations can be analyzed for **strategic planning**.
+- Remove duplicates
+- Handle missing values
+- Standardize formats
+- Data validation
+- Data enrichment
+- Derived columns
 
 ---
 
-### **🔹 Reporting in SQL 📜**
-✅ **What is it?**
-- SQL queries generate reports that help in **business decision-making**.
+## 🥇 Gold Layer (Business Layer)
 
-✅ **Example Query:** Sales Performance Report
-```sql
-SELECT region, 
-       SUM(sales) AS total_sales, 
-       COUNT(DISTINCT customer_id) AS unique_customers, 
-       AVG(sales) AS avg_sales_per_customer
-FROM sales_data
-GROUP BY region
-ORDER BY total_sales DESC;
+The Gold layer contains business-ready datasets optimized for reporting.
+
+### Features
+
+- Aggregated metrics
+- Analytical views
+- Business rules
+- Reporting tables
+- KPI calculations
+
+---
+
+# 🔄 ELT Workflow
+
+## 📥 Extract
+
+- CRM Source
+- ERP Source
+- CSV Files
+
+↓
+
+## 📦 Load
+
+- Batch Loading
+- SQL Server
+- Raw Storage
+
+↓
+
+## 🔧 Transform
+
+- Data Cleaning
+- Data Validation
+- Data Integration
+- Data Standardization
+- Derived Columns
+- Aggregations
+
+↓
+
+## 📈 Business Insights
+
+- Reports
+- Dashboards
+- Analytics
+- Decision Making
+
+---
+
+# 📂 Project Structure
+
 ```
-✅ **Insights We Get:**
-- 🏆 Identifies top-performing **regions**.
-- 📊 Helps understand **customer spending patterns**.
-- 📌 Useful for **regional sales strategy planning**.
+Scalable-Data-Warehousing-ELT
+│
+├── dataset
+│   ├── source_crm
+│   └── source_erp
+│
+├── docs
+│
+├── scripts
+│   ├── 1_initialize_project
+│   ├── 2_bronze_layer
+│   ├── 3_silver_layer
+│   ├── 4_gold_layer
+│   ├── 5_EDA
+│   └── 6_analysis_and_reports
+│
+└── README.md
+```
 
 ---
 
-## **📌 About Me**
+# ⚙️ Technologies Used
 
-👋 Hello! I am **Janardhan Reddy Illuru**, a passionate **Data Scientist AI/ML Engineer & Data Analyst** with expertise in:
-- 🧠 **Machine Learning & Predictive Modeling**
-- 🛢️ **SQL & Database Optimization**
-- 📊 **Power BI & Tableau Dashboards**
-- 📝 **Data Preprocessing & Feature Engineering**
-- 🔍 **EDA & Advanced Analytics**
-
-
-🚀 **Connect with me:** [LinkedIn](https://www.linkedin.com/in/jana2207/) | [GitHub](https://github.com/Jana2207) | [portfolio ](https://jana2207.github.io/) | [janailluru220@gmail.com](janailluru220@gmail.com)
+- SQL Server
+- SQL
+- Data Warehousing
+- ELT Pipeline
+- Exploratory Data Analysis (EDA)
+- Draw.io
+- Business Analytics
 
 ---
 
-🔥 **Conclusion:** This project **efficiently transforms raw data into business insights** using a well-defined **ELT pipeline**, **data cleaning**, **EDA**, and **advanced analytics**. The **Bronze-Silver-Gold** structure ensures **data integrity, accessibility, and usability**, enabling **business teams to make informed decisions**. 🚀
+# 📊 Exploratory Data Analysis
+
+The project includes SQL-based exploratory analysis to better understand the dataset.
+
+### Analysis Performed
+
+- Database Exploration
+- Customer Analysis
+- Product Analysis
+- Date Analysis
+- Sales Trends
+- Top & Bottom Performers
+- Business Metrics
+
+---
+
+# 📈 Business Analytics
+
+The project demonstrates how SQL can answer business questions such as:
+
+- Which products generate the highest revenue?
+- Which customers contribute the most sales?
+- What are the monthly sales trends?
+- Which regions perform the best?
+- Which products require business attention?
+
+---
+
+# 📑 SQL Reports
+
+Some reports included in this project are:
+
+- Customer Performance Report
+- Product Performance Report
+- Sales Analysis
+- Revenue Trends
+- Exploratory Data Analysis
+- Advanced SQL Queries
+
+---
+
+# 📁 Dataset
+
+The project uses sample CRM and ERP datasets stored as CSV files.
+
+These datasets are processed through multiple transformation layers before becoming analytics-ready.
+
+---
+
+# ▶️ How to Run
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/Sumaiya461/Scalable-Data-Warehousing-ELT.git
+```
+
+2. Open the SQL scripts in SQL Server Management Studio (SSMS).
+
+3. Execute the scripts in order:
+
+```
+1_initialize_project
+↓
+2_bronze_layer
+↓
+3_silver_layer
+↓
+4_gold_layer
+↓
+5_EDA
+↓
+6_analysis_and_reports
+```
+
+---
+
+# 📚 What I Learned
+
+Through this project I strengthened my understanding of:
+
+- SQL Programming
+- Data Warehousing
+- ELT Process
+- Data Cleaning
+- Data Transformation
+- Data Modeling
+- Exploratory Data Analysis
+- Business Reporting
+- SQL Optimization
+- Database Design
+
+---
+
+# 🚀 Future Improvements
+
+I plan to extend this project by adding:
+
+- 📊 Power BI Dashboard
+- 📈 Tableau Dashboard
+- 🐍 Python Data Analysis
+- 📉 Automated Data Pipeline
+- ☁ Cloud Data Warehouse
+- 📋 Interactive Business Reports
+
+---
+
+# 👩‍💻 About Me
+
+Hi! I'm **Sumaiya Mohammad**, an **Aspiring Data Analyst** passionate about transforming raw data into meaningful business insights.
+
+I enjoy learning and building projects involving **SQL, Python, Data Warehousing, and Business Intelligence** while continuously improving my analytical and problem-solving skills.
+
+---
+
+## 🛠 Skills
+
+- SQL
+- Python
+- Power BI
+- Data Warehousing
+- Data Analysis
+- ETL / ELT
+- Exploratory Data Analysis
+
+---
+
+# 📫 Connect With Me
+
+💼 **LinkedIn**
+
+https://www.linkedin.com/in/sumaiya2006/
+
+💻 **GitHub**
+
+https://github.com/Sumaiya461
+
+📧 **Email**
+
+sumaiyamohammad2006@gmail.com
+
+---
+
+# ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
+
+It motivates me to continue building and sharing more data projects.
+
+---
+
+## 📜 License
+
+This project is intended for educational and portfolio purposes.
